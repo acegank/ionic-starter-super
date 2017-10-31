@@ -10,10 +10,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { Items } from '../mocks/providers/items';
-import { Settings } from '../providers/providers';
-import { User } from '../providers/providers';
-import { Api } from '../providers/providers';
+import { Settings, User, Api } from '../providers/providers';
 import { MyApp } from './app.component';
+import { SuperModalModule } from '../components/modal/modal.module';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -50,8 +49,9 @@ export function provideSettings(storage: Storage) {
         deps: [HttpClient]
       }
     }),
+    SuperModalModule.forRoot(),
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [

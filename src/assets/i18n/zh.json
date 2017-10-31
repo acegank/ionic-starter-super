@@ -1,0 +1,68 @@
+{
+  "BACK_BUTTON_TEXT": "返回",
+
+  "NAME": "名字",
+  "EMAIL": "邮箱",
+  "USERNAME": "用户名",
+  "PASSWORD": "密码",
+  "LOGIN": "登录",
+  "SIGNUP": "注册",
+
+  "TAB1_TITLE": "联系人",
+  "TAB2_TITLE": "搜索",
+  "TAB3_TITLE": "设置",
+
+  "MAP_TITLE": "地图",
+
+  "TUTORIAL_SKIP_BUTTON": "跳过",
+  "TUTORIAL_CONTINUE_BUTTON": "继续",
+
+  "TUTORIAL_SLIDE1_TITLE": "欢迎使用教程示例",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "<b>移动端种子项目</b> 是一个很好的项目开始模版.",
+
+  "TUTORIAL_SLIDE2_TITLE": "如何使用本项目模版",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "组装各种页面类型您想要删除那些你不喜欢我们提供了许多常见的移动应用程序页面，登录和注册页面，标签，和本教程页面。",
+
+  "TUTORIAL_SLIDE3_TITLE": "如何开始",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "不会使用? 请阅读教程说明",
+
+  "TUTORIAL_SLIDE4_TITLE": "准备开始了吗?",
+
+  "WELCOME_INTRO": "请愉快的开始吧",
+
+  "SETTINGS_TITLE": "设置项",
+  "SETTINGS_OPTION1": "选项 1",
+  "SETTINGS_OPTION2": "选项 2",
+  "SETTINGS_OPTION3": "选项 3",
+  "SETTINGS_OPTION4": "选项 4",
+
+  "SETTINGS_PROFILE_BUTTON": "修改个人资料",
+
+  "SETTINGS_PAGE_PROFILE": "修改个人资料",
+
+  "WELCOME_TITLE": "欢迎",
+
+  "LOGIN_TITLE": "登录",
+  "LOGIN_ERROR": "无法登录. 请检查账号信息并重试。",
+  "LOGIN_BUTTON": "登录",
+  "SIGNUP_TITLE": "注册",
+  "SIGNUP_ERROR": "无法创建帐号. 请检查账号信息并重试.",
+  "SIGNUP_BUTTON": "注册",
+
+  "LIST_MASTER_TITLE": "条目",
+
+  "ITEM_CREATE_TITLE": "创建",
+  "ITEM_CREATE_CHOOSE_IMAGE": "添加图片",
+
+  "ITEM_NAME_PLACEHOLDER": "名称",
+  "ITEM_ABOUT_PLACEHOLDER": "关于",
+
+  "DONE_BUTTON": "完成",
+  "CANCEL_BUTTON": "取消",
+  "DELETE_BUTTON": "删除",
+
+  "CARDS_TITLE": "社交",
+
+  "SEARCH_TITLE": "搜索",
+  "SEARCH_PLACEHOLDER": "搜索如下列表, 如: \"Donald Duck\""
+}

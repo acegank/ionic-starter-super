@@ -3,6 +3,7 @@ import { IonicPage, ModalController, NavController } from 'ionic-angular';
 
 import { Item } from '../../models/item';
 import { Items } from '../../providers/providers';
+import { SuperModalController } from '../../components/modal/modal';
 
 @IonicPage()
 @Component({
@@ -12,7 +13,7 @@ import { Items } from '../../providers/providers';
 export class ListMasterPage {
   currentItems: Item[];
 
-  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: SuperModalController) {
     this.currentItems = this.items.query();
   }
 
@@ -27,13 +28,13 @@ export class ListMasterPage {
    * modal and then adds the new item to our data source if the user created one.
    */
   addItem() {
-    let addModal = this.modalCtrl.create('ItemCreatePage');
-    addModal.onDidDismiss(item => {
-      if (item) {
-        this.items.add(item);
+    this.modalCtrl.open('ItemCreatePage', null,
+      item => {
+        if (item) {
+          this.items.add(item);
+        }
       }
-    })
-    addModal.present();
+    );
   }
 
   /**

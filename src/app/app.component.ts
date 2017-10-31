@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { Config, Nav, Platform } from 'ionic-angular';
+import { Config, Nav, Platform, IonicApp } from 'ionic-angular';
 
 import { FirstRunPage } from '../pages/pages';
 import { Settings } from '../providers/providers';
@@ -32,27 +32,55 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
-    { title: 'Tutorial', component: 'TutorialPage' },
-    { title: 'Welcome', component: 'WelcomePage' },
-    { title: 'Tabs', component: 'TabsPage' },
-    { title: 'Cards', component: 'CardsPage' },
-    { title: 'Content', component: 'ContentPage' },
-    { title: 'Login', component: 'LoginPage' },
-    { title: 'Signup', component: 'SignupPage' },
-    { title: 'Master Detail', component: 'ListMasterPage' },
-    { title: 'Menu', component: 'MenuPage' },
-    { title: 'Settings', component: 'SettingsPage' },
-    { title: 'Search', component: 'SearchPage' }
+    { title: '教程', component: 'TutorialPage' },
+    { title: '欢迎', component: 'WelcomePage' },
+    { title: '标签页面', component: 'TabsPage' },
+    { title: '卡片', component: 'CardsPage' },
+    { title: '内容', component: 'ContentPage' },
+    { title: '登录', component: 'LoginPage' },
+    { title: '注册', component: 'SignupPage' },
+    { title: '母版详情', component: 'ListMasterPage' },
+    { title: '菜单', component: 'MenuPage' },
+    { title: '设置', component: 'SettingsPage' },
+    { title: '搜索', component: 'SearchPage' }
   ]
 
-  constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
+  constructor(
+    private translate: TranslateService,
+    platform: Platform,
+    settings: Settings,
+    private config: Config,
+    private statusBar: StatusBar,
+    private splashScreen: SplashScreen,
+    private ionicApp: IonicApp, ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.setupBrowserBackButtonBehavior();
     });
     this.initTranslate();
+  }
+
+
+  private setupBrowserBackButtonBehavior(): void {
+    window.onpopstate = (event) => {
+      if (this.ionicApp) {
+        let activePortal: any =
+          this.ionicApp._loadingPortal.getActive() ||
+          this.ionicApp._modalPortal.getActive() ||
+          this.ionicApp._toastPortal.getActive() ||
+          this.ionicApp._overlayPortal.getActive();
+
+        console.log('ss', this.ionicApp._modalPortal.getActive());
+        if (activePortal) {
+          activePortal.dismiss();
+          // this.app.setTitle("your title");
+          return;
+        }
+      }
+    };
   }
 
   initTranslate() {
@@ -62,7 +90,7 @@ export class MyApp {
     if (this.translate.getBrowserLang() !== undefined) {
       this.translate.use(this.translate.getBrowserLang());
     } else {
-      this.translate.use('en'); // Set your language here
+      this.translate.use('zh'); // Set your language here
     }
 
     this.translate.get(['BACK_BUTTON_TEXT']).subscribe(values => {
