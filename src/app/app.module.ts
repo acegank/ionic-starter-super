@@ -8,11 +8,10 @@ import { IonicStorageModule, Storage } from '@ionic/storage';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-
-import { Items } from '../mocks/providers/items';
-import { Settings, User, Api } from '../providers/providers';
 import { MyApp } from './app.component';
-import { SuperModalModule } from '../components/modal/modal.module';
+
+import { Settings, CoreModule, Item, Items, Api, User } from './core/core.module';
+import { SuperModalModule } from './shared/shared.module';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -27,6 +26,7 @@ export function provideSettings(storage: Storage) {
    * You can add new settings options at any time. Once the settings are saved,
    * these values will not overwrite the saved values (this can be done manually if desired).
    */
+
   return new Settings(storage, {
     option1: true,
     option2: 'Ionitron J. Framework',
@@ -42,6 +42,7 @@ export function provideSettings(storage: Storage) {
   imports: [
     BrowserModule,
     HttpClientModule,
+    CoreModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

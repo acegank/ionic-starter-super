@@ -1,5 +1,5 @@
 import { HttpModule } from '@angular/http';
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { Page } from './page';
@@ -15,4 +15,12 @@ import { Page } from './page';
     Page
   ]
 })
-export class PageComponentModule { }
+export class PageComponentModule {
+
+  public static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: PageComponentModule, providers: []
+    };
+  }
+
+}

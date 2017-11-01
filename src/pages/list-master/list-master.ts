@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, ModalController, NavController } from 'ionic-angular';
-
-import { Item } from '../../models/item';
-import { Items } from '../../providers/providers';
-import { SuperModalController } from '../../components/modal/modal';
+import { Item, Items } from './../../app/core/core.module';
+import { SuperModalController } from './../../app/shared/shared.module';
 
 @IonicPage()
 @Component({

@@ -5,7 +5,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { Config, Nav, Platform, IonicApp } from 'ionic-angular';
 
 import { FirstRunPage } from '../pages/pages';
-import { Settings } from '../providers/providers';
 
 @Component({
   template: `<ion-menu [content]="content">
@@ -48,7 +47,6 @@ export class MyApp {
   constructor(
     private translate: TranslateService,
     platform: Platform,
-    settings: Settings,
     private config: Config,
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
