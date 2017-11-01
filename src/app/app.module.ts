@@ -12,10 +12,9 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MyApp } from './app.component';
 
-import { Settings, CoreModule, Item, Items, User } from './core/core.module';
-import { ExtIonicModule } from './ext-ionic/index';
-import { SuperModalModule } from './shared/shared.module';
-import { TokenInterceptor } from './core/net/token/token.interceptor';
+import { TokenInterceptor, Settings, CoreModule, Item, Items, User } from '@core/core.module';
+import { SuperModalModule } from '@shared/shared.module';
+import { ExtIonicModule } from '@ext/index';
 
 
 // The translate loader needs to know where to load i18n files

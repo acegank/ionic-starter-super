@@ -30,7 +30,7 @@ export interface ProxyOption {
 @Injectable()
 export class MockProxy extends HttpProxy {
 
-  ajax(options: ProxyOption) {
+  ajax(options: ProxyOption): Observable<any> {
 
     let mock = environment.mock;
     let apiPrefix = environment.apiPrefix;

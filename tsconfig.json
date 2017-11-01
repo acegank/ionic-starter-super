@@ -1,33 +1,35 @@
 {
-	"compilerOptions": {
-		"allowSyntheticDefaultImports": true,
-		"declaration": false,
-		"emitDecoratorMetadata": true,
-		"experimentalDecorators": true,
-		"lib": [
-			"dom",
-			"es2015"
-		],
-		"module": "es2015",
-		"moduleResolution": "node",
-		"sourceMap": true,
-		"target": "es5",
-		"baseUrl": "src/",
-		"paths": {
-			"@shared": ["app/shared"],
-			"@shared/*": ["app/shared/*"],
-			"@core": ["app/core/"],
-			"@core/*": ["app/core/*"]
-		}
-	},
-	"include": [
-		"src/**/*.ts"
-	],
-	"exclude": [
-		"node_modules"
-	],
-	"compileOnSave": false,
-	"atom": {
-		"rewriteTsconfig": false
-	}
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": [
+      "dom",
+      "es2015"
+    ],
+    "module": "es2015",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "target": "es5",
+    "baseUrl": "src/",
+    "paths": {
+      "@shared": ["app/shared"],
+      "@shared/*": ["app/shared/*"],
+      "@core": ["app/core/"],
+      "@core/*": ["app/core/*"],
+      "@ext": ["app/ext-ionic/"],
+      "@ext/*": ["app/ext-ionic/*"]
+    }
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compileOnSave": false,
+  "atom": {
+    "rewriteTsconfig": false
+  }
 }
