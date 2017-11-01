@@ -14,6 +14,7 @@ export * from './proxy/ajax/ajax';
 export * from './proxy/http-proxy/http-proxy';
 export * from './net/token/token.service';
 export * from './providers/providers';
+export * from './net/token/token.interceptor';
 
 
 @NgModule({

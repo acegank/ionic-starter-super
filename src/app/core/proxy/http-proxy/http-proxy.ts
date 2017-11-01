@@ -17,11 +17,11 @@ export class HttpProxy {
 
   host: string;
   constructor(public http: HttpClient) {
-    // if (config.apiHost === 'self') {
-    //     this.host = config.apiHost = `${location.protocol}//${location.host}`;
-    // } else {
-    //     this.host = config.apiHost;
-    // }
+    if (environment.host === 'self') {
+      this.host = environment.host = `${location.protocol}//${location.host}`;
+    } else {
+      this.host = environment.host;
+    }
   }
 
   private _loading = false;
@@ -55,11 +55,6 @@ export class HttpProxy {
   private end() {
     console.timeEnd();
     this._loading = false;
-  }
-
-  /** 服务端URL地址 */
-  get SERVER_URL(): string {
-    return environment.SERVER_URL;
   }
 
   request(method: string, url: string, options: any) {

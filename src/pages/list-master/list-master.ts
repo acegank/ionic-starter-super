@@ -46,6 +46,7 @@ export class ListMasterPage {
    * Navigate to the detail page for this item.
    */
   openItem(item: Item) {
+    // history.pushState(null, null, "");
     this.navCtrl.push('ItemDetailPage', {
       item: item
     });

@@ -1,5 +1,7 @@
 export const environment = {
-    SERVER_URL: `./`,
-    production: true,
-    hmr: true
+  host: `./`,
+  apiPrefix: 'api',
+  production: true,
+  mock: true,
+  hmr: true
 };

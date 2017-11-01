@@ -1,3 +1,4 @@
+import { AjaxProxy } from './core/proxy/ajax/ajax';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -8,10 +9,14 @@ import { IonicStorageModule, Storage } from '@ionic/storage';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MyApp } from './app.component';
 
-import { Settings, CoreModule, Item, Items, Api, User } from './core/core.module';
+import { Settings, CoreModule, Item, Items, User } from './core/core.module';
+import { ExtIonicModule } from './ext-ionic/index';
 import { SuperModalModule } from './shared/shared.module';
+import { TokenInterceptor } from './core/net/token/token.interceptor';
+
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -43,6 +48,7 @@ export function provideSettings(storage: Storage) {
     BrowserModule,
     HttpClientModule,
     CoreModule,
+    ExtIonicModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -59,7 +65,7 @@ export function provideSettings(storage: Storage) {
     MyApp
   ],
   providers: [
-    Api,
+    // Api,
     Items,
     User,
     Camera,
@@ -67,7 +73,9 @@ export function provideSettings(storage: Storage) {
     StatusBar,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    // { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }, //如果用token 则启用这个拦截器
+    AjaxProxy
   ]
 })
 export class AppModule { }
