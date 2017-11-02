@@ -12,7 +12,8 @@
     "@types/hammerjs": "2.0.34",
     "@types/lodash": "4.14.61",
     "mockjs": "1.0.1-beta3",
-    "moment": "2.19.1"
+    "moment": "2.19.1",
+    "awesome-typescript-loader": "3.3.0"
   },
   "config": {
     "ionic_webpack": "./scripts/webpack.config.js"
