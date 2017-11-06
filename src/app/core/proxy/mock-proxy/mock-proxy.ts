@@ -39,11 +39,11 @@ export class MockProxy extends HttpProxy {
       options.url = `${this.host}/${apiPrefix}/${options.url}`;
     }
 
-    if (mock && options.mockJson) {
+    if (mock && options && options.mockJson) {
       options.url = options.mockJson;
       options.method = 'GET';
 
-    } else if (mock && options.mockJs && typeof Mock !== 'undefined') {
+    } else if (mock && options && options.mockJs && typeof Mock !== 'undefined') {
 
       let output;
       const urlKey = options.mockJs + (options.method || 'GET');

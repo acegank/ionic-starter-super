@@ -1,3 +1,4 @@
+import { TreeModule } from 'ng2-tree';
 import { AjaxProxy } from './core/proxy/ajax/ajax';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -47,6 +48,7 @@ export function provideSettings(storage: Storage) {
     BrowserModule,
     HttpClientModule,
     CoreModule,
+    TreeModule,    
     ExtIonicModule.forRoot(),
     TranslateModule.forRoot({
       loader: {

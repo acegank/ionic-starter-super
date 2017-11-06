@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-searchbar (ionInput)="searchItems($event)" debounce="800" placeholder="查找"></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button (click)="add()">
+        <ion-icon name='md-add'></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--
+  <ion-list>
+    <ion-item class="nav-nodes">
+
+      <a *ngFor="let node of navbar" (click)="switch(node)">{{node.value}}</a>
+    </ion-item>
+  </ion-list> -->
+
+  <ion-list class="nav-tree">
+    <ion-item>
+      <ion-icon (click)="showTree()" item-start name="git-merge"></ion-icon>
+      {{current.value}}
+      <!-- <ion-icon name='md-add' item-end (click)="add()"></ion-icon> -->
+    </ion-item>
+    <button (click)="switch(node)" ion-item *ngFor="let node of current.children">
+      {{node.value}}
+    </button>
+  </ion-list>
+
+  <!-- <div class="tree-demo">
+    <div class="tree-container">
+      <div class="tree-content">
+        <tree [tree]="pls" [settings]="settings" (nodeRemoved)="onNodeRemoved($event)" (nodeRenamed)="onNodeRenamed($event)" (nodeSelected)="onNodeSelected($event)"
+          (nodeMoved)="onNodeMoved($event)" (nodeCreated)="onNodeCreated($event)">
+        </tree>
+      </div>
+    </div>
+  </div> -->
+</ion-content>
