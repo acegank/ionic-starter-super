@@ -1,4 +1,3 @@
-import { TreeModule } from 'ng2-tree';
 import { AjaxProxy } from './core/proxy/ajax/ajax';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -16,6 +15,7 @@ import { MyApp } from './app.component';
 import { TokenInterceptor, Settings, CoreModule, Item, Items, User } from '@core/core.module';
 import { SuperModalModule } from '@shared/shared.module';
 import { ExtIonicModule } from '@ext/index';
+import { TreeModule } from 'ng2-tree';
 
 
 // The translate loader needs to know where to load i18n files
@@ -48,8 +48,8 @@ export function provideSettings(storage: Storage) {
     BrowserModule,
     HttpClientModule,
     CoreModule,
-    TreeModule,    
     ExtIonicModule.forRoot(),
+    TreeModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

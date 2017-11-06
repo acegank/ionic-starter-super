@@ -1,3 +1,4 @@
+import { CoreModule } from './../core/core.module';
 import { PageComponentModule } from './components/page/page.module';
 import { SuperModalModule } from './components/modal/modal.module';
 import { NgModule, ModuleWithProviders } from "@angular/core";
@@ -9,6 +10,7 @@ export { SuperModalController } from './components/modal/modal';
 
 @NgModule({
   imports: [
+    CoreModule,
     SuperModalModule.forRoot(),
     PageComponentModule.forRoot(),
   ],

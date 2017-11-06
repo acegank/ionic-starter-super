@@ -59,7 +59,7 @@ export class HttpProxy {
 
   request(method: string, url: string, options: any) {
 
-    if (options && options.params) {
+    if (options.params) {
       options.params = this.parseParams(options.params);
     }
 
