@@ -1,3 +1,5 @@
+import { AjaxProxy } from './../../../core/proxy/ajax/ajax';
+import { SuperModalController } from './../modal/modal';
 import { HttpClient } from '@angular/common/http';
 import { Component, NgZone, ViewChild } from '@angular/core';
 import { App, Platform, ViewController, ModalController, NavController, NavParams, ToastController, AlertController, LoadingController, Events, Content } from "ionic-angular";
@@ -21,7 +23,7 @@ export class Page {
     public platform: Platform,
     public toastCtrl: ToastController,
     public viewCtrl: ViewController,
-    public modalCtrl: ModalController,
+    public modalCtrl: SuperModalController,
     public navCtrl: NavController,
     public navParams: NavParams,
     public loadingCtrl: LoadingController,
@@ -30,13 +32,10 @@ export class Page {
     public event: Events,
     public zone: NgZone,
     public client: HttpClient,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public ajax: AjaxProxy,
   ) {
-    // this.registerErrorEvents();
-    // console.log('codes', codes);
 
-    // http.get().toPromise();
-    // client.get().toPromise();
   }
 
   ionViewDidLoad() {
@@ -123,11 +122,7 @@ export class Page {
    * @memberof Page
    */
   openModal(name, data, onDismiss?) {
-    // history.pushState(null, null, "");
-    let modal = this.modalCtrl.create(name, data);
-    if (onDismiss)
-      modal.onDidDismiss(onDismiss);
-    modal.present();
+    this.modalCtrl.open(name, data, onDismiss);
   }
 
   /**
