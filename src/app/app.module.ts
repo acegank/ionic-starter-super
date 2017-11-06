@@ -15,6 +15,7 @@ import { MyApp } from './app.component';
 import { TokenInterceptor, Settings, CoreModule, Item, Items, User } from '@core/core.module';
 import { SuperModalModule } from '@shared/shared.module';
 import { ExtIonicModule } from '@ext/index';
+import { TreeModule } from 'ng2-tree';
 
 
 // The translate loader needs to know where to load i18n files
@@ -47,6 +48,7 @@ export function provideSettings(storage: Storage) {
     BrowserModule,
     HttpClientModule,
     CoreModule,
+    TreeModule,
     ExtIonicModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
