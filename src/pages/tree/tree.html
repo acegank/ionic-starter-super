@@ -10,23 +10,33 @@
 </ion-header>
 
 <ion-content>
-  <!--
   <ion-list>
     <ion-item class="nav-nodes">
-
-      <a *ngFor="let node of navbar" (click)="switch(node)">{{node.value}}</a>
+      <div *ngFor="let node of navbar; let i=index; trackBy:trackByIndex">
+        <a class="nav-{{i}}" (click)="switch(node)">{{node.value}}</a>
+      </div>
     </ion-item>
-  </ion-list> -->
-
-  <ion-list class="nav-tree">
-    <ion-item>
+    <ion-item class="caption">
       <ion-icon (click)="showTree()" item-start name="git-merge"></ion-icon>
       {{current.value}}
       <!-- <ion-icon name='md-add' item-end (click)="add()"></ion-icon> -->
     </ion-item>
-    <button (click)="switch(node)" ion-item *ngFor="let node of current.children">
-      {{node.value}}
-    </button>
+    <ion-item-sliding *ngFor="let node of current.children">
+      <button *ngIf="node.children" (click)="switch(node)" ion-item>
+        {{node.value}}
+      </button>
+
+      <ion-item *ngIf="!node.children">
+        {{node.value}}
+      </ion-item>
+
+      <ion-item-options>
+        <button type="button" (click)="del(item)" ion-button color="danger" icon-left>
+          删除
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
   </ion-list>
 
   <!-- <div class="tree-demo">

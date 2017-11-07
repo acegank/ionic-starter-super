@@ -18,50 +18,53 @@ export class TreePage extends Page implements OnInit {
     value: '亿实软件名字很长',
     children: [
       {
-        id: '0001',
+        id: '00/01',
         value: '有个项目组名字也不短',
         children: [
           {
-            id: '000101',
+            id: '00/01/01',
             value: '小组AAAAAAA'
           },
           {
-            id: '000102',
+            id: '00/01/02',
             value: '小组BBBBBBB'
           },
           {
-            id: '000103',
+            id: '00/01/03',
             value: '小组CCCCCCC'
           },
           {
-            id: '000104',
+            id: '00/01/04',
             value: '小组DDDDDDD'
           },
           {
-            id: '000105',
+            id: '00/01/05',
             value: '小组EEEEEEE'
           }
         ]
       },
       {
-        id: '0002',
+        id: '00/02',
         value: '有个市场部',
         children: [
           {
-            id: '000201',
+            id: '00/02/01',
             value: '小组HHHHHH'
           },
           {
-            id: '000202',
+            id: '00/02/02',
             value: '小组IIIIII'
           },
-          { value: '小组GGGGGG' },
           {
-            id: '000203',
+            id: '00/02/03',
+            value: '小组GGGGGG'
+          },
+          {
+            id: '00/02/04',
             value: '小组MMMMMM',
             children: [
               {
-                id: '00020301',
+                id: '00/02/03/01',
                 value: '特别忙小队'
               }
             ]
@@ -69,11 +72,11 @@ export class TreePage extends Page implements OnInit {
         ]
       },
       {
-        id: '0003',
+        id: '00/03',
         value: '有个后勤部',
         children: [
           {
-            id: '000301',
+            id: '00/03/01',
             value: '超级飞侠'
           }
         ]
@@ -91,15 +94,43 @@ export class TreePage extends Page implements OnInit {
     this.navbar.push(this.current);
   }
 
+  getParents(node) {
+    let paths = node.id.split('/');
+    let ids = [];
+    ids.push(paths.shift());
+    let nodes = [];
+    let currentNode = this.treeData;
+    nodes.push(currentNode);
+
+    paths.forEach((id) => {
+      ids.push(id);
+      if (currentNode.children) {
+        let child = currentNode.children.find((n) => {
+          return n.id === ids.join('/');
+        });
+        if (child) {
+          nodes.push(child);
+          currentNode = child;
+        }
+      }
+    });
+    return nodes;
+  }
+
+
   switch(node?: TreeModel) {
     if (node) {
       this.current = node;
-      this.navbar.push(this.current);
+      this.navbar = this.getParents(node);
     }
   }
 
   add() {
     console.log('新增部门 ..');
+  }
+
+  edit(node) {
+
   }
 
   showTree() {

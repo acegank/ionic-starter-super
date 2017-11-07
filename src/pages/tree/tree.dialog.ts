@@ -22,8 +22,7 @@ import { TreeModel } from "ng2-tree";
       <div class="tree-container">
         <div class="tree-content">
             <tree [tree]="tree"
-            (nodeSelected)="onNodeSelected($event)"
-            [settings]="settings">
+            (nodeSelected)="onNodeSelected($event)">
             </tree>
         </div>
       </div>
@@ -36,7 +35,7 @@ export class TreeDialogPage extends Page implements OnInit {
 
   tree: TreeModel;
   current: TreeModel;
-  settings = {
+  public settings = {
     'static': true,
     'rightMenu': true,
     'leftMenu': true,
@@ -56,10 +55,15 @@ export class TreeDialogPage extends Page implements OnInit {
   ngOnInit(): void {
     this.tree = this.navParams.get('tree');
     this.current = this.navParams.get('current');
+    this.tree.settings = this.settings;
     this.app.setTitle(this.current.value.toString());
   }
 
   public onNodeSelected(e): void {
+    // this.dismiss(e);
+    this.current = e.node;
+
+    this.app.setTitle(e.node.value.toString());
     this.dismiss(e);
   }
 
